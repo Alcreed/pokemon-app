@@ -23,6 +23,8 @@ export async function getAllPokemonsData(offset, limit) {
       NAME: pokemonData.name,
       IMAGE: pokemonData.sprites.other.dream_world.front_default,
       WEIGHT: pokemonData.weight,
+      HEIGHT: pokemonData.height,
+      EXPERIENCE: pokemonData.base_experience,
       HP: pokemonData.stats[0].base_stat,
       ATTACK: pokemonData.stats[1].base_stat,
       DEFENSE: pokemonData.stats[2].base_stat,

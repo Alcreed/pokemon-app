@@ -1,0 +1,103 @@
+.PokemonCard {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.PokemonCard:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.PokemonCard_top {
+  width: 100%;
+  height: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FF452B;
+  border-bottom: 10px solid #263238;
+}
+
+.PokemonCard_bot {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #ffffff;
+}
+
+.PokemonCard_image_container {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.PokemonCard_image {
+  width: 100%;
+  height: 100%;
+}
+
+.PokemonCard_content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.PokemonCard_name {
+  font-size: 25px;
+  font-weight: 600;
+  color: #263238;
+  text-transform: capitalize;
+}
+
+.PokemonCard_favorite {
+  width: 15px;
+  height: 15px;
+  margin: 0px 0px 0px 10px;
+  cursor: pointer;
+}
+
+.PokemonCard_information {
+  width: 100%;
+  display: grid;
+  place-content: center;
+  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  box-sizing: border-box;
+  padding: 0px 10px;
+}
+
+.PokemonCard_information_option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Option_title {
+  font-size: 20px;
+  color: #263238;
+  margin: 0px 0px 10px;
+}
+
+.Option_value {
+  font-size: 17px;
+}

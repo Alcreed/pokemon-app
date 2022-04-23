@@ -3,6 +3,9 @@ import { getAllPokemonsData } from '../../Functions';
 
 import Loader from '../Loader/Loader';
 import Navbar from "../Navbar/Navbar";
+import PokemonList from "../PokemonList/PokemonList";
+
+import './Home.css'
 
 function Home() {
 
@@ -41,6 +44,14 @@ function Home() {
         onChangeView = {(view) => setViewSelected(view)}
         viewSelected = {viewSelected}
       />
+
+      <section className='pokemons_content'>
+        {viewSelected === 'home' &&
+          <PokemonList 
+            pokemonsData = {pokemonsData}
+          />
+        }
+      </section>
     </main>
   )
 }
