@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { getAllPokemonsData } from '../../Functions';
 
 import Loader from '../Loader/Loader';
+import Navbar from "../Navbar/Navbar";
 
 function Home() {
 
   const [pokemonsData, setPokemonsData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [viewSelected, setViewSelected] = useState('home');
 
   useEffect(() => {
     fetchPokemonsData()
@@ -34,9 +36,12 @@ function Home() {
   }
 
   return (
-    <>
-      <p>Home</p>
-    </>
+    <main className='pokemon_app'>
+      <Navbar 
+        onChangeView = {(view) => setViewSelected(view)}
+        viewSelected = {viewSelected}
+      />
+    </main>
   )
 }
 
