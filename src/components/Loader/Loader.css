@@ -1,0 +1,61 @@
+.Loader_pokeball {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.Loader_pokeball_content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: loader linear infinite;
+}
+
+.Loader_pokeball_content .pokeball:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.Loader_pokeball_content .pokeball:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.Loader_pokeball_content .pokeball:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.pokeball {
+  width: 40px;
+  height: 40px;
+  margin: 0px 30px 0px 0px;
+
+  animation: pokeball 2s ease infinite;
+}
+
+@keyframes loader {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes pokeball {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+}
+
