@@ -5,6 +5,7 @@ import Loader from '../Loader/Loader';
 import Navbar from "../Navbar/Navbar";
 import SearchBar from "../SearchBar/SearchBar";
 import PokemonList from "../PokemonList/PokemonList";
+import FavoritesList from "../FavoritesList/FavoritesList";
 
 import './Home.css'
 
@@ -14,6 +15,7 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [viewSelected, setViewSelected] = useState('home');
   const [searchPokemon, setSearchPokemon] = useState('');
+  const [favoritesIds, setFavoritesIds] = useState([]);
 
   useEffect(() => {
     fetchPokemonsData()
@@ -33,6 +35,19 @@ function Home() {
       setLoading(false);
     }
   };
+
+  const favoritePokemonsList = (id) => {
+    let newFavorites = [...favoritesIds];
+
+    if (newFavorites.includes(id)) {
+      let idIndex = newFavorites.findIndex(item => item === id);
+      newFavorites.splice(idIndex, 1)
+    } else {
+      newFavorites.push(id);
+    }
+    
+    setFavoritesIds(newFavorites);
+  }
 
   if (loading) {
     return (
@@ -57,6 +72,17 @@ function Home() {
           <PokemonList 
             pokemonsData = {pokemonsData}
             searchPokemon = {searchPokemon}
+            addToFavorite = {(id) => favoritePokemonsList(id)}
+            favoritesIds = {favoritesIds}
+          />
+        }
+
+        {viewSelected === 'favorites' &&
+          <FavoritesList 
+            pokemonsData = {pokemonsData}
+            searchPokemon = {searchPokemon}
+            addToFavorite = {(id) => favoritePokemonsList(id)}
+            favoritesIds = {favoritesIds}
           />
         }
       </section>

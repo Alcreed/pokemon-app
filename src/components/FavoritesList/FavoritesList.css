@@ -1,0 +1,12 @@
+.FavoritesEmpty {
+  width: 100%;
+  text-align: center;
+  grid-column: 1 / 6;
+  margin: 0;
+  padding: 0;
+}
+
+.FavoritesEmpty_text {
+  color: #3f3c3c;
+  font-size: 20px;
+}
