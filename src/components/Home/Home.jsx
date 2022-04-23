@@ -3,6 +3,7 @@ import { getAllPokemonsData } from '../../Functions';
 
 import Loader from '../Loader/Loader';
 import Navbar from "../Navbar/Navbar";
+import SearchBar from "../SearchBar/SearchBar";
 import PokemonList from "../PokemonList/PokemonList";
 
 import './Home.css'
@@ -12,6 +13,7 @@ function Home() {
   const [pokemonsData, setPokemonsData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [viewSelected, setViewSelected] = useState('home');
+  const [searchPokemon, setSearchPokemon] = useState('');
 
   useEffect(() => {
     fetchPokemonsData()
@@ -45,10 +47,16 @@ function Home() {
         viewSelected = {viewSelected}
       />
 
+      <SearchBar
+        pokemonName = {searchPokemon}
+        searchPokemon = {(value) => setSearchPokemon(value)} 
+      />
+
       <section className='pokemons_content'>
         {viewSelected === 'home' &&
           <PokemonList 
             pokemonsData = {pokemonsData}
+            searchPokemon = {searchPokemon}
           />
         }
       </section>
