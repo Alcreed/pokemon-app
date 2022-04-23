@@ -6,6 +6,7 @@ import Navbar from "../Navbar/Navbar";
 import SearchBar from "../SearchBar/SearchBar";
 import PokemonList from "../PokemonList/PokemonList";
 import FavoritesList from "../FavoritesList/FavoritesList";
+import ModalPokemonDetails from "../ModalPokemonDetails/ModalPokemonDetails";
 
 import './Home.css'
 
@@ -20,7 +21,9 @@ function Home() {
     offset: 0,
     limit: 20,
     counter: 20
-  })
+  });
+  const [isModalDetailsOpen, setIsModalDetailsOpen] = useState(false);
+  const [pokemonSelected, setPokemonSelected] = useState({})
 
   useEffect(() => {
     fetchPokemonsData()
@@ -52,7 +55,7 @@ function Home() {
     }
     
     setFavoritesIds(newFavorites);
-  }
+  };
 
   const pagination = (type) => {
     if (type === 'next') {
@@ -83,7 +86,14 @@ function Home() {
         });
       }
     }
-  }
+  };
+
+  const openModalDetails = (id) => {
+    let pokemonDetails = pokemonsData.find(pokemon => pokemon.ID === id);
+    
+    setPokemonSelected(pokemonDetails);
+    setIsModalDetailsOpen(true);
+  };
 
   if (loading) {
     return (
@@ -111,6 +121,7 @@ function Home() {
             addToFavorite = {(id) => favoritePokemonsList(id)}
             favoritesIds = {favoritesIds}
             paginationValues = {paginationValues}
+            openModalDetails = {(id) => openModalDetails(id)}
           />
         }
 
@@ -141,6 +152,12 @@ function Home() {
           </button>
         </section>
       }
+
+      <ModalPokemonDetails
+        isOpen = {isModalDetailsOpen}
+        pokemonSelected = {pokemonSelected}
+        onCloseModalDetails = {() => setIsModalDetailsOpen(false)}
+      />
     </main>
   )
 }
