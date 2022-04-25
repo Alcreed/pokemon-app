@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   margin: 50px auto;
+  padding: 0px 20px;
 }
 
 .SearchBar_input {

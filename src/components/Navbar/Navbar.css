@@ -61,4 +61,112 @@
   width: 60px;
 }
 
+@media screen and (max-width: 500px) {
+  .sidebarOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: rgba(255, 219, 208, .4);
+  }
+  
+  .NavbarSidebar {
+    width: 60%;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    background-color: #FF452B;
+    box-sizing: border-box;
+    transform: translateX(-100%);
+    
+    animation-name: sidebar;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
 
+  @keyframes sidebar {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .Pokemon_navbarMobile {
+    width: 40px;
+    height: 40px;
+    grid-column: 1 / 2;
+    align-self: center;
+    box-sizing: border-box;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .NavbarSidebar_back {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .NavbarMobile_button, .NavbarMobile_back_button {
+    width: 100%;
+  }
+
+  .NavbarSidebar_options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .NavbarSidebar_option {
+    text-align: center;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .NavbarSidebar_option:nth-child(1) {
+    border-top: 1px solid #ffffff;
+  }
+
+  .NavbarSidebar_option:hover {
+    color: #FF452B;
+    background-color: #ffffff;
+  }
+
+  .NavbarSidebar_option.selected {
+    color: #FF452B;
+    background-color: #ffffff;
+  }
+
+  .Pokemon_navbar_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+  }
+
+  .Pokemon_navbar_logo {
+    width: 30%;
+    grid-column: 2 / 3;
+    justify-self: flex-end;
+  }
+
+  .Pokemon_navbar_options {
+    display: none;
+  }
+
+  .Pokemon_navbar_profile {
+    display: none;
+  }
+}
