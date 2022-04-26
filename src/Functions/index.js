@@ -1,4 +1,15 @@
-async function fetchPokemons(offset, limit){
+/**
+ * Petición a la API de pokemón de los primeros 151 elementos
+ * @function fetchPokemons
+ *
+ * Por cada pokemon obtenido, se utiliza la url para obtener datos adicionales de cada uno
+ * @function fetchPokemonData
+ * 
+ * Finalmente, se recorre cada elemento y se retorna un objeto con los diferentes atributos de cada pokemón
+ * @function getAllPokemonsData
+ * @returns {Array}
+ */
+async function fetchPokemons(){
   let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`);
   let data = response.json();
   

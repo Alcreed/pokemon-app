@@ -6,6 +6,10 @@ import './FavoritesList.css';
 
 function FavoritesList({ pokemonsData, addToFavorite, favoritesIds, searchPokemon }) {
 
+  /**
+   * Función para filtrar por medio de la barra de búsqueda en la lista de favoritos
+   * @param {Object} pokemon  
+   */
   const filterFavorites = (pokemon) => {
     return pokemon.NAME.toLowerCase().includes(searchPokemon.toLowerCase()) && favoritesIds.includes(pokemon.ID)
   };

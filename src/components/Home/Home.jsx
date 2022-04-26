@@ -30,6 +30,10 @@ function Home() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  /**
+   * Función con la cual se obtienen los diferentes pokemón y se guardan en un hook
+   * Además, se habilita un loader mientras se realiza esta petición
+   */
   const fetchPokemonsData = async () => {
     try {
       setLoading(true);
@@ -44,6 +48,11 @@ function Home() {
     }
   };
 
+  /**
+   * Función que se utiliza para guardar una lista de ids para mostrarlos en el componente favoritos
+   * Se realiza una validación para agregar o eliminar el id del pokemón seleccionado del arreglo
+   * @param {Number} id 
+   */
   const favoritePokemonsList = (id) => {
     let newFavorites = [...favoritesIds];
 
@@ -57,6 +66,11 @@ function Home() {
     setFavoritesIds(newFavorites);
   };
 
+  /**
+   * Función que se utiliza para realizar la paginación y cambio de los elementos mostrados
+   * Se muestran 20 elementos simultaneamente
+   * @param {String} type 
+   */
   const pagination = (type) => {
     if (type === 'next') {
       if (paginationValues.counter > pokemonsData.length) {
@@ -88,6 +102,11 @@ function Home() {
     }
   };
 
+  /**
+   * Función donde se obtiene el pokemón seleccionado para guardar su información en un hook
+   * La información de este pokemón se muestra en un pop-up
+   * @param {Number} id 
+   */
   const openModalDetails = (id) => {
     let pokemonDetails = pokemonsData.find(pokemon => pokemon.ID === id);
     

@@ -12,6 +12,10 @@ function Navbar({ onChangeView, viewSelected }) {
   const [showSidebar, setShowSidebar] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  /**
+   * Se obtiene el tamaño interno de la pantalla y se guarda su valor
+   * Se utiliza para mostrar u ocultar el botón para desplegar un navbar mobile
+   */
   useEffect(() => {
     const changeWidth = () => {
       setWindowWidth(window.innerWidth);
