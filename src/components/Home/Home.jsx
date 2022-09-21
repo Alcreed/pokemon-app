@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { setPokemons as setPokemonsActions } from "../../actions";
+import { useSelector, useDispatch } from "react-redux";
+import { setPokemons } from "../../actions";
 import { getAllPokemonsData } from '../../Functions';
 
 import Loader from '../Loader/Loader';
@@ -12,8 +12,12 @@ import ModalPokemonDetails from "../ModalPokemonDetails/ModalPokemonDetails";
 
 import './Home.css'
 
-function Home({ pokemonsData, setPokemonsData }) {
+function Home() {
 
+  // Hooks redux
+  const pokemonsData = useSelector(state => state.pokemons);
+  const dispatch = useDispatch();
+  //
   const [loading, setLoading] = useState(false);
   const [viewSelected, setViewSelected] = useState('home');
   const [searchPokemon, setSearchPokemon] = useState('');
@@ -41,7 +45,7 @@ function Home({ pokemonsData, setPokemonsData }) {
       
       let allPokemonsData = await getAllPokemonsData()
       
-      setPokemonsData(allPokemonsData);
+      dispatch(setPokemons(allPokemonsData));
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -182,12 +186,4 @@ function Home({ pokemonsData, setPokemonsData }) {
   )
 }
 
-const mapStateToProps = (state => ({
-  pokemonsData: state.pokemons,
-}));
-
-const mapDispatchToProps = (dispatch) => ({
-  setPokemonsData: (value) => dispatch(setPokemonsActions(value))
-});
-
-export default  connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
