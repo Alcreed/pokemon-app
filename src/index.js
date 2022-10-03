@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { pokemonsReducer } from './reducers/pokemons';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, legacy_createStore as createStore } from 'redux';
-import { featuring, logger } from './middlewares';
+import { logger } from './middlewares';
 
 import App from './App';
 

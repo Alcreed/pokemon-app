@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPokemons } from "../../actions";
+import { setPokemons, setLoading } from "../../actions";
 import { getAllPokemonsData } from '../../Functions';
 
 import Loader from '../Loader/Loader';
@@ -16,9 +16,9 @@ function Home() {
 
   // Hooks redux
   const pokemonsData = useSelector(state => state.pokemons);
+  const loading = useSelector(state => state.loading);
   const dispatch = useDispatch();
   //
-  const [loading, setLoading] = useState(false);
   const [viewSelected, setViewSelected] = useState('home');
   const [searchPokemon, setSearchPokemon] = useState('');
   const [favoritesIds, setFavoritesIds] = useState([]);
@@ -41,15 +41,15 @@ function Home() {
    */
   const fetchPokemonsData = async () => {
     try {
-      setLoading(true);
+      dispatch(setLoading(true))
       
       let allPokemonsData = await getAllPokemonsData()
       
       dispatch(setPokemons(allPokemonsData));
-      setLoading(false);
+      dispatch(setLoading(false))
     } catch (error) {
       console.log(error);
-      setLoading(false);
+      dispatch(setLoading(false))
     }
   };
 
