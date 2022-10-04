@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { pokemonsReducer } from './reducers/pokemons';
+import rootReducer from './reducers/rootReducers';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, legacy_createStore as createStore } from 'redux';
 import { logger } from './middlewares';
@@ -14,7 +14,7 @@ const composedEnhancers = compose(
   applyMiddleware(logger)
 );
 
-const store = createStore(pokemonsReducer, composedEnhancers);
+const store = createStore(rootReducer, composedEnhancers);
 
 ReactDOM.render(
   <React.StrictMode>
