@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { setPokemons, setLoading } from "../../actions";
-import { getAllPokemonsData } from '../../Functions';
+import { getAllPokemonsData } from "../../Functions/index";
+import { setPokemons } from "../../slices/pokemonsSlice";
+import { setLoading } from "../../slices/uiSlice";
 
 import Loader from '../Loader/Loader';
 import Navbar from "../Navbar/Navbar";
@@ -15,8 +16,8 @@ import './Home.css'
 function Home() {
 
   // Hooks redux
-  const pokemonsData = useSelector(state => state.pokemonsReducer.pokemons, shallowEqual);
-  const loading = useSelector(state => state.globalReducer.loading);
+  const pokemonsData = useSelector(state => state.pokemonsData.pokemons, shallowEqual);
+  const loading = useSelector(state => state.ui.loading);
   const dispatch = useDispatch();
   //
   const [viewSelected, setViewSelected] = useState('home');

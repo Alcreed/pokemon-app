@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { globalReducer } from "./globalReducer";
-import { pokemonsReducer } from "./pokemons";
+import { pokemonsReducer } from "../slices/pokemonsSlice";
+import { uiReducer } from "../slices/uiSlice";
 
 const rootReducer = combineReducers({
-  pokemonsReducer,
-  globalReducer
+  pokemonsData: pokemonsReducer,
+  ui: uiReducer
 });
 
 export default rootReducer;
